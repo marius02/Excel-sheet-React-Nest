@@ -12,14 +12,6 @@ COPY . .
 
 RUN pnpm run build
 
-FROM node:18
-
-WORKDIR /backend
-
-COPY --from=builder /backend/dist ./dist
-COPY --from=builder /backend/node_modules ./node_modules
-COPY --from=builder /backend/package*.json /backend/pnpm-lock.yaml ./
-
 # Expose the application port
 EXPOSE 5000
 
